@@ -237,7 +237,7 @@ INSERT INTO STUDENT (
 VALUES (
         'DE21642',
         '21bit081@ietdavv.edu.in',
-        '21bit081',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Aditi',
         'Shukla',
         'BE',
@@ -248,7 +248,7 @@ VALUES (
     (
         'DE21643',
         '21bit181@ietdavv.edu.in',
-        '21bit181',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Amit Kumar',
         'Gontiya',
         'BE',
@@ -259,7 +259,7 @@ VALUES (
     (
         'DE21644',
         '21bit082@ietdavv.edu.in',
-        '21bit082',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Ankita',
         'Oswal',
         'BE',
@@ -270,7 +270,7 @@ VALUES (
     (
         'DE21645',
         '21bit182@ietdavv.edu.in',
-        '21bit182',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Arnav Yogesh',
         'Vaishnav',
         'BE',
@@ -281,7 +281,7 @@ VALUES (
     (
         'DE21646',
         '21bit183@ietdavv.edu.in',
-        '21bit183',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Astitva Pratap Singh',
         'Tomar',
         'BE',
@@ -292,7 +292,7 @@ VALUES (
     (
         'DE21647',
         '21bit083@ietdavv.edu.in',
-        '21bit083',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Devraj',
         'Trivedi',
         'BE',
@@ -303,7 +303,7 @@ VALUES (
     (
         'DE21648',
         '21bit084@ietdavv.edu.in',
-        '21bit084',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Harsh Verdhan',
         'Raj',
         'BE',
@@ -314,7 +314,7 @@ VALUES (
     (
         'DE21649',
         '21bit186@ietdavv.edu.in',
-        '21bit186',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Komal',
         'Shinde',
         'BE',
@@ -325,7 +325,7 @@ VALUES (
     (
         'DE21650',
         '21bit085@ietdavv.edu.in',
-        '21bit085',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Reetesh Kumar',
         'Pandey',
         'BE',
@@ -336,7 +336,7 @@ VALUES (
     (
         'DE21651',
         '21bit184@ietdavv.edu.in',
-        '21bit184',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Samiksha',
         'Hanotiya',
         'BE',
@@ -347,7 +347,7 @@ VALUES (
     (
         'DE21652',
         '21bit086@ietdavv.edu.in',
-        '21bit086',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Shlok',
         'Jaiswal',
         'BE',
@@ -358,7 +358,7 @@ VALUES (
     (
         'DE21653',
         '21bit185@ietdavv.edu.in',
-        '21bit185',
+        '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06',
         'Tisha',
         'Singh',
         'BE',
