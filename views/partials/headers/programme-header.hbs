@@ -1,0 +1,37 @@
+{{!-- programme-header.hbs --}}
+
+<div class="row">
+    <div class="col-sm">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="col-sm-auto d-flex justify-content-end">
+        <div class="row">
+            <div class="col-sm-auto">
+                <form class="d-flex" method="POST" action="{{dir.parent}}/programme-list" novalidate>
+                    <input class="form-control me-2" type="search" name="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-sm-auto">
+                <a href="{{dir.parent}}/programme-list/add-programme" type="button"
+                    class="btn btn-dark align-self-center"><i class="bi bi-plus-lg"></i> Add Programme</a>
+            </div>
+        </div>
+    </div>
+
+    {{#if schema.programme}}
+    <div class="col-sm-12">
+        <div class="font-monospace">
+            <span>Items: </span>
+            {{#if schema.programmeFunctions}}
+            <span>{{schema.programmeFunctions.length}}</span>
+            {{else}}
+            <span>0</span>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+<hr>

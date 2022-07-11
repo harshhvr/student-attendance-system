@@ -1,0 +1,24 @@
+{{!-- error.hbs --}}
+
+<div class="container-fluid">
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/error-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto">
+
+    <h1>{{message}}</h1>
+    <h2>{{error.status}}</h2>
+    <pre>{{error.stack}}</pre>
+
+</div>

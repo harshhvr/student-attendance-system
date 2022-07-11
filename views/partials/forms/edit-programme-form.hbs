@@ -1,0 +1,22 @@
+{{!-- edit-programme-form.hbs --}}
+
+{{!-- Edit Programme Form --}}
+<div class="row g-3">
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="progAbbr" value="{{this.Prog_abbr}}"
+                placeholder="Programme Abbreviation" name="prog_abbr" required>
+            <label for="progAbbr">Programme Abbreviation</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="progName" value="{{this.Prog_name}}"
+                placeholder="Programme Name" name="prog_name" required>
+            <label for="progName">Programme Name</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>

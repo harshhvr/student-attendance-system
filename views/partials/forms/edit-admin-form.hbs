@@ -1,0 +1,36 @@
+{{!-- edit-admin-form.hbs --}}
+
+{{!-- Edit Admin Form --}}
+<div class="row g-3">
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="aid" value="{{this.Aid}}" placeholder="Admin ID" name="aid"
+                readonly required>
+            <label for="aid">Aid</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" value="{{this.Email}}" placeholder="name@example.com"
+                name="email" required>
+            <label for="email">Email address</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="fname" value="{{this.Fname}}" placeholder="First Name"
+                name="fname" required>
+            <label for="fname">First Name</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="lname" value="{{this.Lname}}" placeholder="Last Name"
+                name="lname" required>
+            <label for="lname">Last Name</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>

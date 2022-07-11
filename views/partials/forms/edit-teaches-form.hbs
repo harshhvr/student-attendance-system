@@ -1,0 +1,101 @@
+{{!-- edit-teaches-form.hbs --}}
+
+{{!-- Edit Teaches Form --}}
+<div class="row g-3">
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="tid" class="form-select" name="tid" aria-label="Default select example" required>
+                <option value="" {{#if this.Tid}}{{else}}selected{{/if}}>Select</option>
+                {{#each this.teacher}}
+                <option value="{{this.Tid}}" {{#ifEquals ../Tid this.Tid}}selected{{/ifEquals}}>{{this.Tid}} -
+                    {{this.Fname}} {{this.Lname}}</option>
+                {{/each}}
+            </select>
+            <label for="tid">Tid</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="subjectCode" class="form-select" name="subject_code" aria-label="Default select example"
+                required>
+                <option value="" {{#if this.Subject_code}}{{else}}selected{{/if}}>Select</option>
+                {{#each this.subject}}
+                <option value="{{this.Subject_code}}" {{#ifEquals ../Subject_code
+                    this.Subject_code}}selected{{/ifEquals}}>
+                    {{this.Subject_code}} - {{this.Subject_name}}</option>
+                {{/each}}
+            </select>
+            <label for="subjectCode">Subject Code</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="programme" class="form-select" name="programme" onchange="getClassesOfProgramme(this,'Year')"
+                aria-label="Default select example" required>
+                <option value="" {{#if this.Programme}}{{else}}selected{{/if}}>Select</option>
+                {{#each this.programme}}
+                <option value="{{this.Prog_abbr}}" {{#ifEquals ../Programme this.Prog_abbr}}selected{{/ifEquals}}>
+                    {{this.Prog_abbr}} - {{this.Prog_name}}</option>
+                {{/each}}
+            </select>
+            <label for="programme">Programme</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="class" class="form-select" name="class" aria-label="Default select example" required>
+                <option value="" {{#if this.Class}}{{else}}selected{{/if}}>Select</option>
+                <option value="1" class="ordinal-number" {{#ifEquals this.Class '1' }}selected{{/ifEquals}}>1</option>
+                <option value="2" class="ordinal-number" {{#ifEquals this.Class '2' }}selected{{/ifEquals}}>2</option>
+                <option value="3" class="ordinal-number" {{#ifEquals this.Class '3' }}selected{{/ifEquals}}>3</option>
+                <option value="4" class="ordinal-number" {{#ifEquals this.Class '4' }}selected{{/ifEquals}}>4</option>
+            </select>
+            <label for="class">Class</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="department" class="form-select" name="department" aria-label="Default select example" required>
+                <option value="" {{#if this.Department}}{{else}}selected{{/if}}>Select</option>
+                {{#each this.department}}
+                <option value="{{this.Dept_abbr}}" {{#ifEquals ../Department this.Dept_abbr}}selected{{/ifEquals}}>
+                    {{this.Dept_abbr}} - {{this.Dept_name}}</option>
+                {{/each}}
+            </select>
+            <label for="department">Department</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="section" class="form-select" name="section" aria-label="Default select example" required>
+                <option value="" {{#if this.Section}}{{else}}selected{{/if}}>Select</option>
+                <option value="A" {{#ifEquals this.Section 'A' }}selected{{/ifEquals}}>A</option>
+                <option value="B" {{#ifEquals this.Section 'B' }}selected{{/ifEquals}}>B</option>
+                <option value="C" {{#ifEquals this.Section 'C' }}selected{{/ifEquals}}>C</option>
+                <option value="D" {{#ifEquals this.Section 'D' }}selected{{/ifEquals}}>D</option>
+            </select>
+            <label for="section">Section</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>
+
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+
+    switchInputsById(
+        { src: "tid", dest: "subjectCode" },
+        { src: "subjectCode", dest: "programme" },
+        { src: "programme", dest: "class" },
+        { src: "class", dest: "department" },
+        { src: "department", dest: "section" }
+    );
+</script>

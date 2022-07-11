@@ -1,0 +1,68 @@
+{{!-- teacher.hbs --}}
+
+<div class="container-fluid">
+
+    <nav class="fw-semibold" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+
+    <br>
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/basic-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto scrollbar scrollbar-morpheus-den">
+
+    <div class="overflow-hidden">
+        <div class="row gy-4">
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Account</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/profile" class="btn btn-dark mb-1">Profile</a>
+                        <a href="{{dir.parent}}/profile" class="btn btn-dark mb-1">Change / Forgot Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Attendance Section</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/manage-attendance" class="btn btn-dark">Manage Attendance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Lists to view only</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/class-list" class="btn btn-dark">Class List</a>
+                        <a href="{{dir.parent}}/taken-classes-list" class="btn btn-dark">Taken Class List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,121 @@
+{{!-- manage-attendance-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                {{!-- <th scope="col">#</th> --}}
+                <th scope="col">Subject</th>
+                <th scope="col">Programme</th>
+                <th scope="col">Class</th>
+                <th scope="col">Department</th>
+                <th scope="col">Section</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.classes}}
+            {{!-- <tr>
+                <th scope="col">{{this.Subject_code}}</th>
+                <th scope="col">{{this.Programme}}</th>
+                <th scope="col">{{this.Class}}</th>
+                <th scope="col">{{this.Department}}</th>
+                <th scope="col">{{this.Section}}</th>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto">
+                            <button class="btn btn-dark" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </td>
+            </tr> --}}
+            <tr>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto mb-3 fw-bold">{{this.Subject_code}} - {{this.Subject_name}}</div>
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="subjectCode" placeholder="Subject Code"
+                                    name="subject_code" value="{{this.Subject_code}}" readonly required>
+                                <label for="subjectCode">Subject Code</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto mb-3 fw-bold">{{this.Programme}}</div>
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="programme" placeholder="Programme"
+                                    name="programme" value="{{this.Programme}}" readonly required>
+                                <label for="programme">Programme</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto mb-3 fw-bold ordinal-number">{{this.Class}}</div>
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="class" placeholder="Class" name="class"
+                                    value="{{this.Class}}" readonly required>
+                                <label for="class">Class</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto mb-3 fw-bold">{{this.Department}}</div>
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="department" placeholder="Department"
+                                    name="department" value="{{this.Department}}" readonly required>
+                                <label for="department">Department</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row d-flex">
+                        <div class="col-sm-auto mb-3 fw-bold">{{this.Section}}</div>
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="section" placeholder="Section"
+                                    name="section" value="{{this.Section}}" readonly required>
+                                <label for="section">Section</label>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-sm-auto">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control form-control-sm date" id="date"
+                                    placeholder="Date" name="date" value="{{this.Date}}" data-value="currentDate"
+                                    required>
+                                <label for="date">Attendance Date</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <button class="btn btn-dark" type="submit">Continue</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+</script>

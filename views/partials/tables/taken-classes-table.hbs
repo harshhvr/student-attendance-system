@@ -1,0 +1,39 @@
+{{!-- taken-classes-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                {{!-- <th scope="col">#</th> --}}
+                <th scope="col">Programme</th>
+                <th scope="col">Class</th>
+                <th scope="col">Department</th>
+                <th scope="col">Section</th>
+                <th scope="col">Subject Code</th>
+                <th scope="col">Taken Classes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.classes}}
+            <tr>
+                {{!-- <th scope="row">{{this.Id}}</th> --}}
+                <th scope="row">{{this.Programme}}</td>
+                <th scope="row" class="ordinal-number">{{this.Class}}</td>
+                <th scope="row">{{this.Department}}</td>
+                <th scope="row">{{this.Section}}</td>
+                <td>{{this.Subject_code}}</td>
+                <td>{{this.Taken_classes}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+      target: ".ordinal-number",
+      text: "Year",
+    });
+</script>

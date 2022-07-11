@@ -1,0 +1,39 @@
+{{!-- view-attendance-header.hbs --}}
+
+<div class="row">
+    <div class="col-sm">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="col-sm-auto d-flex justify-content-end">
+        <div class="row">
+            {{!-- <div class="col-sm-auto">
+                <form class="d-flex" method="POST"
+                    action="{{dir.parent}}/manage-attendance/view-attendance{{schema.reqData}}" novalidate>
+                    <input class="form-control me-2" type="search" name="search" placeholder="Search"
+                        aria-label="Search">
+                    <button class="btn btn-outline-dark" type="submit">Search</button>
+                </form>
+            </div> --}}
+            <div class="col-sm-auto">
+                {{!-- <a href="{{dir.parent}}/manage-attendance/attendance-form" type="button"
+                    class="btn btn-dark align-self-center">Manage</a> --}}
+                {{>forms/get-attendance-form-by-teacher-form}}
+            </div>
+        </div>
+    </div>
+
+    {{#if schema.attendance}}
+    <div class="col-sm-12">
+        <div class="font-monospace">
+            <span>Items: </span>
+            {{#if schema.attendanceFunctions}}
+            <span>{{schema.attendanceFunctions.length}}</span>
+            {{else}}
+            <span>0</span>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+</div>
+
+<hr>

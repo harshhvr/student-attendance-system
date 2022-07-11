@@ -1,0 +1,41 @@
+{{!-- view-admin-table.hbs --}}
+
+<div>
+
+    {{#each schema.admin}}
+
+    <div class="row mb-5">
+        <div class="col text-center">
+            {{!-- <h3>{{this.Aid}}</h3> --}}
+            <h3>{{this.Fname}} {{this.Lname}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="shadow overflow-auto">
+                <table class="table min-w-1280px max-w-1280px">
+                    <thead class="sticky-top bg-dark text-light">
+                        <tr>
+                            <th scope="col">Aid</th>
+                            <th scope="col">Fname</th>
+                            <th scope="col">Lname</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{this.Aid}}</th>
+                            <td>{{this.Fname}}</td>
+                            <td>{{this.Lname}}</td>
+                            <td>{{this.Email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+
+</div>

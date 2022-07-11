@@ -1,0 +1,35 @@
+{{!-- teacher-table-read-only.hbs --}}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tid</th>
+            <th scope="col">Fname</th>
+            <th scope="col">Lname</th>
+            <th scope="col">Email</th>
+            {{!-- <th scope="col">Password</th> --}}
+            <th scope="col">Status</th>
+            <th scope="col" class="text-end">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows}}
+        <tr>
+            <th scope="row">{{this.Tid}}</th>
+            <td>{{this.Fname}}</td>
+            <td>{{this.Lname}}</td>
+            <td>{{this.Email}}</td>
+            {{!-- <td>{{this.Password}}</td> --}}
+            <td>{{this.Status}}</td>
+            <td class="text-end">
+                <a href="./view-teacher/{{this.Tid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-eye"></i> View</a>
+                {{!-- <a href="./edit-teacher/{{this.Tid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-pencil"></i> Edit</a>
+                <a href="./teacher-list/{{this.Tid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-person-x"></i> Delete</a> --}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,16 @@
+{{!-- admin-header.hbs --}}
+
+<div class="row">
+    <div class="col-sm-6">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="col-sm-6 d-flex justify-content-end">
+        {{#if dataObj.signInStatus}}
+        <a href="/home" type="button" class="btn btn-dark align-self-center">Go to Home</a>
+        {{else}}
+        <a href="/signin" type="button" class="btn btn-dark align-self-center">Sign in</a>
+        {{/if}}
+    </div>
+</div>
+
+<hr>

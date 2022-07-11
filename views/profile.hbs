@@ -1,0 +1,43 @@
+{{!-- profile.hbs --}}
+
+<div class="container-fluid">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+        </ol>
+    </nav>
+
+    {{!-- <br> --}}
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/basic-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto">
+
+    {{#ifEquals dataObj.user.data.Role "admin"}}
+    {{>profiles/view-admin-profile}}
+    {{/ifEquals}}
+
+    {{#ifEquals dataObj.user.data.Role "teacher"}}
+    {{>profiles/view-teacher-profile}}
+    {{/ifEquals}}
+
+    {{#ifEquals dataObj.user.data.Role "student"}}
+    {{>profiles/view-student-profile}}
+    {{/ifEquals}}
+
+</div>

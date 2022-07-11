@@ -1,0 +1,39 @@
+{{!-- view-subject-table.hbs --}}
+
+<div>
+
+    {{#each schema.subject}}
+
+    <div class="row mb-5">
+        <div class="col text-center">
+            {{!-- <h3>{{this.Sid}}</h3> --}}
+            <h3>{{this.Dept_name}}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="shadow overflow-auto">
+                <table class="table min-w-1280px max-w-1280px">
+                    <thead class="sticky-top bg-dark text-light">
+                        <tr>
+                            <th scope="col">Subject Code</th>
+                            <th scope="col">Subject Name</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{this.Subject_code}}</th>
+                            <td>{{this.Subject_name}}</td>
+                            <td>{{this.Status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+
+</div>

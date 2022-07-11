@@ -1,0 +1,46 @@
+{{!-- subject-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                <th scope="col">Subject Code</th>
+                <th scope="col">Subject Name</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.subject}}
+            <tr class="{{#ifEquals this.Status 'active'}}table-default{{else}}table-secondary{{/ifEquals}}">
+                <th scope="row">{{this.Subject_code}}</th>
+                <td>{{this.Subject_name}}</td>
+                <td>{{this.Status}}</td>
+                <td class="text-end">
+                    <a href="{{../dir.parent}}/subject-list/view-subject/{{this.Subject_code}}" type="button"
+                        class="btn btn-dark btn-small" title="View"><i class="bi bi-eye"></i></a>
+                    <a href="{{../dir.parent}}/subject-list/edit-subject/{{this.Subject_code}}" type="button"
+                        class="btn btn-dark btn-small" title="Edit"
+                        onclick="return confirm('Are you sure, you want to edit \'{{this.Subject_code}}\'?')"><i
+                            class="bi bi-pencil"></i></a>
+                    {{#ifEquals this.Status "active"}}
+                    <a href="#{{this.Subject_code}}--{{this.Status}}" type="button" class="btn btn-warning btn-small"
+                        data-href="{{../dir.parent}}/subject-list/changeStatus/{{this.Subject_code}}/{{this.Status}}"
+                        data-message="Are you sure, you want to block '{{this.Subject_code}}'"
+                        onclick="fancyAlert({confirm:this})" title="Block"><i class="bi bi-slash-circle"></i></a>
+                    {{else}}
+                    <a href="#{{this.Subject_code}}--{{this.Status}}" type="button" class="btn btn-success btn-small"
+                        data-href="{{../dir.parent}}/subject-list/changeStatus/{{this.Subject_code}}/{{this.Status}}"
+                        data-message="Are you sure, you want to unblock '{{this.Subject_code}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-check-circle"></i></a>
+                    {{/ifEquals}}
+                    <a href="#{{this.Subject_code}}--{{this.Status}}" type="button" class="btn btn-danger btn-small"
+                        data-href="{{../dir.parent}}/subject-list/delete/{{this.Subject_code}}"
+                        data-message="Are you sure, you want to delete '{{this.Subject_code}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-trash3"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

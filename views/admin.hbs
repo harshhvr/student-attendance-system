@@ -1,0 +1,83 @@
+{{!-- admin.hbs --}}
+
+<div class="container-fluid">
+
+    <nav class="fw-semibold" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+
+    <br>
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/basic-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto scrollbar scrollbar-morpheus-den">
+
+    <div class="overflow-hidden">
+        <div class="row gy-4">
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Account</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/profile" class="btn btn-dark mb-1">Profile</a>
+                        <a href="{{dir.parent}}/profile" class="btn btn-dark mb-1">Change / Forgot Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Manage Users Lists</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}{{dir.parent}}-list" class="btn btn-dark mb-1">Admins List</a>
+                        <a href="{{dir.parent}}/teacher-list" class="btn btn-dark mb-1">Teachers List</a>
+                        <a href="{{dir.parent}}/student-list" class="btn btn-dark mb-1">Students List</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Manage Other Lists</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/programme-list" class="btn btn-dark mb-1">Programme List</a>
+                        <a href="{{dir.parent}}/department-list" class="btn btn-dark mb-1">Department List</a>
+                        <a href="{{dir.parent}}/subject-list" class="btn btn-dark mb-1">Subject List</a>
+                        <a href="{{dir.parent}}/teaches-list" class="btn btn-dark mb-1">Teaches List</a>
+                        <a href="{{dir.parent}}/attendance-list" class="btn btn-dark mb-1">Attendance List</a>
+                    </div>
+                </div>
+            </div>
+            {{!-- <div class="col-sm-4">
+                <div class="card w-100 h-100">
+                    <div class="card-header">
+                        <h4>Lists to view only</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="{{dir.parent}}/attendance-list" class="btn btn-dark mb-1">Attendance List</a>
+                    </div>
+                </div>
+            </div> --}}
+        </div>
+    </div>
+
+</div>

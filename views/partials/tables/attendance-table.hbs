@@ -1,0 +1,50 @@
+{{!-- attendance-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Sid</th>
+                <th scope="col">Subject Code</th>
+                <th scope="col">Status</th>
+                <th scope="col">Tid</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.attendance}}
+            <tr class="{{#ifEquals this.Status 'present'}}table-default{{else}}table-secondary{{/ifEquals}}">
+                <th scope="row">{{dateFormat this.Date "YYYY-MM-DD"}}</th>
+                <td>{{this.Sid}}</td>
+                <td>{{this.Tid}}</td>
+                <td>{{this.Subject_code}}</td>
+                <td>{{this.Status}}</td>
+                <td class="text-end">
+                    {{#ifEquals ../dataObj.user.data.Status "active"}}
+                    {{#ifEquals this.Status "present"}}
+                    <a href="#{{dateFormat this.Date "
+                        YYYY-MM-DD"}}--{{this.Sid}}--{{this.Tid}}--{{this.Subject_code}}--{{this.Status}}" type="button"
+                        class="btn btn-dark btn-small"
+                        data-href="{{../dir.parent}}/attendance-list/changeStatus/{{dateFormat this.Date 'YYYY-MM-DD'}}/{{this.Sid}}/{{this.Tid}}/{{this.Subject_code}}/{{this.Status}}"
+                        data-message="Are you sure, you want to make absent '{{this.Sid}}' on {{dateFormat this.Date "
+                        YYYY-MM-DD"}} in lecture of {{this.Subject_code}} taken by {{this.Tid}}"
+                        onclick="fancyAlert({confirm:this})" title="Make Absent"><i class="bi bi-person-dash"></i></a>
+                    {{else}}
+                    <a href="#{{dateFormat this.Date "
+                        YYYY-MM-DD"}}--{{this.Sid}}--{{this.Tid}}--{{this.Subject_code}}--{{this.Status}}" type="button"
+                        class="btn btn-teal-400 btn-small"
+                        data-href="{{../dir.parent}}/attendance-list/changeStatus/{{dateFormat this.Date 'YYYY-MM-DD'}}/{{this.Sid}}/{{this.Tid}}/{{this.Subject_code}}/{{this.Status}}"
+                        data-message="Are you sure, you want to make present '{{this.Sid}}' on {{dateFormat this.Date "
+                        YYYY-MM-DD"}} in lecture of {{this.Subject_code}} taken by {{this.Tid}}"
+                        onclick="fancyAlert({confirm:this})" title="Make Present"><i class="bi bi-person-check"></i></a>
+                    {{/ifEquals}}
+                    {{else}}
+                    <i class="bi bi-dash-lg"></i>
+                    {{/ifEquals}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

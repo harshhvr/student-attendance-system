@@ -1,0 +1,100 @@
+{{!-- add-student-form.hbs --}}
+
+{{!-- Add Student Form --}}
+<div class="row g-3">
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="sid" placeholder="Student ID" name="sid" required>
+            <label for="sid">Sid</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" required>
+            <label for="fname">First Name</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname" required>
+            <label for="lname">Last Name</label>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-floating mb-3">
+            <select id="programme" class="form-select" name="programme" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                {{#each formInput.programme}}
+                <option value="{{this.Prog_abbr}}">{{this.Prog_abbr}}</option>
+                {{/each}}
+            </select>
+            <label for="programme">Programme</label>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-floating mb-3">
+            <select id="class" class="form-select" name="class" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                <option value="1" class="ordinal-number">1</option>
+                <option value="2" class="ordinal-number">2</option>
+                <option value="3" class="ordinal-number">3</option>
+                <option value="4" class="ordinal-number">4</option>
+            </select>
+            <label for="class">Class</label>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-floating mb-3">
+            <select id="department" class="form-select" name="department" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                {{#each formInput.department}}
+                <option value="{{this.Dept_abbr}}">{{this.Dept_abbr}}</option>
+                {{/each}}
+            </select>
+            <label for="department">Department</label>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-floating mb-3">
+            <select id="section" class="form-select" name="section" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <label for="section">Section</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+            <label for="email">Email address</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+            <label for="password">Password</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>
+
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+
+    switchInputsById(
+        { src: "programme", dest: "class" },
+        { src: "class", dest: "department" },
+        { src: "department", dest: "section" }
+    );
+</script>

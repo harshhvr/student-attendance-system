@@ -1,0 +1,550 @@
+// style.scss
+
+/* style.css */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+// @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Bootstrap Colors */
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+//Generating bg and text color for all base Colors
+@each $color, $value in $colors {
+  .bg-#{$color} {
+    background-color: $value !important;
+  }
+
+  .text-#{$color} {
+    color: $value !important;
+  }
+
+  .btn-#{$color} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+$grays: (
+  "100": $gray-100,
+  "200": $gray-200,
+  "300": $gray-300,
+  "400": $gray-400,
+  "500": $gray-500,
+  "600": $gray-600,
+  "700": $gray-700,
+  "800": $gray-800,
+  "900": $gray-900,
+) !default;
+$blues: (
+  "100": $blue-100,
+  "200": $blue-200,
+  "300": $blue-300,
+  "400": $blue-400,
+  "500": $blue-500,
+  "600": $blue-600,
+  "700": $blue-700,
+  "800": $blue-800,
+  "900": $blue-900,
+) !default;
+$indigos: (
+  "100": $indigo-100,
+  "200": $indigo-200,
+  "300": $indigo-300,
+  "400": $indigo-400,
+  "500": $indigo-500,
+  "600": $indigo-600,
+  "700": $indigo-700,
+  "800": $indigo-800,
+  "900": $indigo-900,
+) !default;
+$purples: (
+  "100": $purple-100,
+  "200": $purple-200,
+  "300": $purple-300,
+  "400": $purple-400,
+  "500": $purple-500,
+  "600": $purple-600,
+  "700": $purple-700,
+  "800": $purple-800,
+  "900": $purple-900,
+) !default;
+$pinks: (
+  "100": $pink-100,
+  "200": $pink-200,
+  "300": $pink-300,
+  "400": $pink-400,
+  "500": $pink-500,
+  "600": $pink-600,
+  "700": $pink-700,
+  "800": $pink-800,
+  "900": $pink-900,
+) !default;
+$reds: (
+  "100": $red-100,
+  "200": $red-200,
+  "300": $red-300,
+  "400": $red-400,
+  "500": $red-500,
+  "600": $red-600,
+  "700": $red-700,
+  "800": $red-800,
+  "900": $red-900,
+) !default;
+$oranges: (
+  "100": $orange-100,
+  "200": $orange-200,
+  "300": $orange-300,
+  "400": $orange-400,
+  "500": $orange-500,
+  "600": $orange-600,
+  "700": $orange-700,
+  "800": $orange-800,
+  "900": $orange-900,
+) !default;
+$yellows: (
+  "100": $yellow-100,
+  "200": $yellow-200,
+  "300": $yellow-300,
+  "400": $yellow-400,
+  "500": $yellow-500,
+  "600": $yellow-600,
+  "700": $yellow-700,
+  "800": $yellow-800,
+  "900": $yellow-900,
+) !default;
+$greens: (
+  "100": $green-100,
+  "200": $green-200,
+  "300": $green-300,
+  "400": $green-400,
+  "500": $green-500,
+  "600": $green-600,
+  "700": $green-700,
+  "800": $green-800,
+  "900": $green-900,
+) !default;
+$teals: (
+  "100": $teal-100,
+  "200": $teal-200,
+  "300": $teal-300,
+  "400": $teal-400,
+  "500": $teal-500,
+  "600": $teal-600,
+  "700": $teal-700,
+  "800": $teal-800,
+  "900": $teal-900,
+) !default;
+$cyans: (
+  "100": $cyan-100,
+  "200": $cyan-200,
+  "300": $cyan-300,
+  "400": $cyan-400,
+  "500": $cyan-500,
+  "600": $cyan-600,
+  "700": $cyan-700,
+  "800": $cyan-800,
+  "900": $cyan-900,
+) !default;
+
+@each $key, $value in $grays {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $blues {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $purples {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $indigos {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $pinks {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $reds {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $oranges {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $yellows {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $greens {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $teals {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $cyans {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@each $key, $value in $cyans {
+  .bg-#{$key} {
+    background-color: $value !important;
+  }
+
+  .text-#{$key} {
+    color: $value !important;
+  }
+
+  .btn-#{$key} {
+    background-color: $value !important;
+    border-color: $value !important;
+  }
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+//
+// My SCSS
+//
+
+::selection {
+  color: #fff;
+  background: #4c4c4c;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  // font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  position: fixed;
+  top: 0;
+  // width: 100vw;
+  height: 100vh;
+  width: 100%;
+  // min-height: 100vmin;
+  // font-family: 'Ubuntu Mono', monospace;
+}
+
+// a {
+//   color: #00b7ff;
+// }
+a {
+  color: #000;
+  text-decoration: underline;
+
+  &:hover {
+    color: #000;
+  }
+  &:active {
+    color: #000;
+    text-decoration: none;
+  }
+  &:focus {
+    color: #000;
+  }
+}
+
+div {
+  &.site-content {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: 1fr;
+    position: relative;
+    // padding: 0.3rem;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  &.content-container {
+    display: grid;
+    grid-gap: 0.3rem;
+    grid-template-rows: auto 1fr;
+    position: relative;
+    // margin: 0 auto;
+    // padding: 0.5rem;
+    // width: 80%;
+    overflow: hidden;
+
+    > table {
+      &.table-scroll-auto {
+        overflow: auto;
+      }
+    }
+  }
+
+  &.sas-cards {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    > a {
+      &.sas-link-card {
+        padding: 2rem 1rem;
+        border: 2px ridge #444;
+        border-radius: 0.5rem;
+        background-color: #efefef;
+        color: #444;
+        text-decoration: none;
+        transition: all 100ms ease-in-out;
+
+        &:active {
+          background-color: #333;
+          color: #fff;
+        }
+      }
+
+      > div {
+        &.sas-link-card-title {
+          font-size: 18px;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &.big-banner {
+    // border-radius: 1vmin;
+    // background: rgb(2, 0, 36);
+    // background: linear-gradient(
+    //   0deg,
+    //   rgba(2, 0, 36, 1) 0%,
+    //   rgba(9, 9, 121, 1) 35%,
+    //   rgba(0, 212, 255, 1) 100%
+    // );
+    background-image: url("../images/Online-Attendance-System-for-Students_Feature.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    // color: #fff;
+    // text-shadow: 0px 3px 6px #000;
+  }
+
+  &.banner-effect-1 {
+    background: radial-gradient(circle, transparent 40%, var(--color-v) 75%),
+      linear-gradient(to right, var(--color), var(--color)), var(--image2);
+    background-position: center center;
+    background-size: cover;
+    background-blend-mode: var(--blend-top, normal),
+      var(--blend-bottom, saturation), normal;
+
+    --image: url(https://images.unsplash.com/photo-1519522800923-7999b95cb3c6?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=81c09a0eae279992234d18e52c8857fa);
+    // --image2: url(https://images.unsplash.com/photo-1508533397692-5b12cd1a0eb2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e5975c5e9135728ccb30eef021ffdc29);
+    --image2: url(../images/Online-Attendance-System-for-Students_Feature.jpg);
+
+    --color-v: black;
+    --color: grey; //hsla(343,100%,50%,.5);
+
+    flex: 1;
+    // width: 100vw;
+  }
+}
+
+a {
+  &.text-dec-none {
+    text-decoration: none;
+  }
+
+  &.sas-link-card {
+    display: block;
+    margin: 0.5rem auto;
+    padding: 2rem 1rem;
+    // border: 2px ridge #444;
+    border-radius: 0.2rem;
+    background-color: #efefef;
+    color: #444;
+    text-align: center;
+    text-decoration: none;
+    transition: all 100ms ease-in-out;
+
+    &:active {
+      background-color: #333;
+      color: #fff;
+    }
+  }
+}
+
+div {
+  &.vh-50 {
+    height: 50vh;
+  }
+  &.vh-60 {
+    height: 60vh;
+  }
+
+  &.min-w-1280px {
+    min-width: 1280px;
+  }
+
+  &.max-w-1280px {
+    max-width: 1280px;
+  }
+
+  &.grid-container {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: 1fr;
+    position: relative;
+    overflow: hidden;
+
+    &.grid-container-rows-auto-1fr {
+      grid-template-rows: auto 1fr;
+    }
+    &.grid-container-rows-1 {
+      grid-template-rows: 1fr;
+    }
+    &.grid-container-rows-2 {
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+}
+
+.form-control,
+.form-select {
+  &:focus {
+    border-color: hwb(0 30% 70%);
+    box-shadow: 0 0 0 0.25rem hwb(0 30% 70% / 0.25);
+  }
+}
+
+// Colors

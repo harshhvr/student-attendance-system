@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{title}} - Student Attendance System</title>
+
+    {{!-- jQuery --}}
+    <script src="/jquery/dist/jquery.min.js"></script>
+
+    {{!-- Bootstrap CSS --}}
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    {{!-- Bootstrap Icons CSS --}}
+    <link rel="stylesheet" href="/bootstrap-icons/font/bootstrap-icons.css">
+    {{!-- Bootstrap JS --}}
+    <script src="/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{!-- FlipClock --}}
+    <link rel="stylesheet" href="/flipclock/dist/flipclock.css">
+    <script src="/flipclock/dist/flipclock.js"></script>
+
+    {{!-- Chart.js --}}
+    <script src="/chart.js/dist/chart.js"></script>
+
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    {{!-- My JS --}}
+    <script src="/javascripts/change-class-name.js"></script>
+    <script src="/javascripts/characters-in-blocks.js"></script>
+    <script src="/javascripts/check-typeof-value.js"></script>
+    <script src="/javascripts/convert-into-ordinal-number.js"></script>
+    <script src="/javascripts/FancyAlert.js"></script>
+    <script src="/javascripts/form-inputs/disable-inputs.js"></script>
+    <script src="/javascripts/form-inputs/requied-form-inputs.js"></script>
+    <script src="/javascripts/form-inputs/set-select-input-value.js"></script>
+    <script src="/javascripts/suffix-stndrdth-1to10.js"></script>
+
+    {{!-- head-script.js --}}
+    <script src="/javascripts/head-script.js"></script>
+</head>
+
+<body>
+    {{>navbars/navbar}}
+
+    <div class="site-content">
+
+        {{#if dataObj.showBigBanner}}
+
+        {{>banners/big-banner}}
+
+        {{else}}
+
+        <div class="content-container container-fluid py-4">
+            {{{body}}}
+        </div>
+
+        {{/if}}
+
+    </div>
+
+    <script src="/javascripts/index.js"></script>
+    <script>
+
+    </script>
+
+</body>
+
+</html>

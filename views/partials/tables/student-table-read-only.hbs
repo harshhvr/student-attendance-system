@@ -1,0 +1,47 @@
+{{!-- student-table-read-only.hbs --}}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Sid</th>
+            <th scope="col">Fname</th>
+            <th scope="col">Lname</th>
+            <th scope="col">Branch</th>
+            <th scope="col">Class</th>
+            <th scope="col">Section</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-end">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows}}
+        <tr>
+            <th scope="row">{{this.Sid}}</th>
+            <td>{{this.Fname}}</td>
+            <td>{{this.Lname}}</td>
+            <td>{{this.Branch}}</td>
+            <td>{{this.Class}}</td>
+            <td>{{this.Section}}</td>
+            <td>{{this.Email}}</td>
+            <td>{{this.Password}}</td>
+            <td>{{this.Status}}</td>
+            <td class="text-end">
+                <a href="./view-student/{{this.Sid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-eye"></i> View</a>
+                {{!-- <a href="./edit-student/{{this.Sid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-pencil"></i> Edit</a>
+                <a href="./student-list/{{this.Sid}}" type="button" class="btn btn-dark btn-small"><i
+                        class="bi bi-person-x"></i> Delete</a> --}}
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- <script src="./javascripts/suffix-stndrdth-1to10.js"></script>
+<script>
+    // Add class 'suffix-1to10'
+    stndrdth1to10Suffix(' Year');
+</script> --}}

@@ -1,0 +1,105 @@
+{{!-- navbar.hbs --}}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+            <img src="/images/logo.png" alt="Logo" class="d-block" width="30" height="30">
+            {{!-- <span>Student Attendance System</span> --}}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link {{#ifEquals dataObj.req.baseUrl ''}} active {{/ifEquals}}" aria-current="page" href="/home">Home</a>
+                </li>
+                {{#if dir.parent}}
+                <li class="nav-item">
+                    <a class="nav-link {{#ifEquals dataObj.req.baseUrl '/admin'}} active {{/ifEquals}}{{#ifEquals dataObj.req.baseUrl '/teacher'}} active {{/ifEquals}}{{#ifEquals dataObj.req.baseUrl '/student'}} active {{/ifEquals}}" aria-current="page" href="{{dir.parent}}">Dashboard</a>
+                </li>
+                {{/if}}
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/teacher">Teacher</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/student">Student</a>
+                </li> --}}
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/course">Course</a>
+                </li> --}}
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/attendance">Attendance</a>
+                </li> --}}
+                {{!-- <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/signup">Sign up</a>
+                </li> --}}
+                {{!-- <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li> --}}
+            </ul>
+
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                {{!-- {{#if dataObj.signInStatus}}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/signout">Sign out</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/signin">Sign in</a>
+                </li>
+                {{/if}} --}}
+                {{!-- {{#if signInStatus}}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{parentDir}}/profile">
+                        <span>{{user.userId}}</span>
+                        <i class="bi bi-person-circle"></i>
+                    </a>
+                </li>
+                {{/if}} --}}
+                {{#if dataObj.signInStatus}}
+                <li class="btn-group">
+                    <a href="#account" class="nav-link dropdown-toggle" aria-current="page" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="bi bi-person-circle"></i>
+                        {{#if dataObj.user.data}}
+                        <span> {{dataObj.user.data.Fname}} {{dataObj.user.data.Lname}} </span>
+                        {{else}}
+                        <span> User Name </span>
+                        {{/if}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <a href="{{dir.parent}}/profile" class="dropdown-item"><i class="bi bi-person"></i>
+                            Profile</a></a>
+                        <a href="#settings" class="dropdown-item"><i class="bi bi-sliders"></i> Settings</a></a>
+                        <div class="dropdown-divider"></div>
+                        <a href="/signout" class="dropdown-item"><i class="bi bi-power"></i> Sign out</a>
+                        {{!-- {{#if dataObj.signInStatus}}
+                        <a href="/signout" class="dropdown-item"><i class="bi bi-power"></i> Sign out</a>
+                        {{else}}
+                        <a href="/signin" class="dropdown-item"><i class="bi bi-power"></i> Sign in</a>
+                        {{/if}} --}}
+                        </a>
+                    </ul>
+                </li>
+                {{else}}
+                {{#ifEquals dataObj.signInStatus false}}
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/signin">Sign in</a>
+                </li>
+                {{/ifEquals}}
+                {{/if}}
+
+            </ul>
+
+            {{!-- <form class="d-flex" method="POST" action="{{parentDir}}/list" novalidate>
+                <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-light" type="submit">Search</button>
+            </form> --}}
+        </div>
+    </div>
+</nav>

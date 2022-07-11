@@ -1,0 +1,97 @@
+{{!-- admin-dashboard.hbs --}}
+
+<div class="container-fluid">
+
+    <nav class="fw-semibold" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Admin</li>
+        </ol>
+    </nav>
+
+    <br>
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/basic-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto scrollbar scrollbar-morpheus-den">
+    {{!-- <h4>Controls</h4>
+    <div class="row">
+        <div class="col col-lg-3">
+            <a href="/forgot-password" class="sas-link-card">
+                <div class="sas-link-card-title">Forgot User Password</div>
+            </a>
+        </div>
+    </div> --}}
+
+    <br>
+
+    <h4>Manage Users Lists</h4>
+    <div class="row">
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}{{dir.parent}}-list" class="sas-link-card">
+                <div class="sas-link-card-title">Admins List</div>
+            </a>
+        </div>
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/teacher-list" class="sas-link-card">
+                <div class="sas-link-card-title">Teachers List</div>
+            </a>
+        </div>
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/student-list" class="sas-link-card">
+                <div class="sas-link-card-title">Students List</div>
+            </a>
+        </div>
+    </div>
+
+    <br>
+
+    <h4>Manage Other Lists</h4>
+    <div class="row">
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/programme-list" class="sas-link-card">
+                <div class="sas-link-card-title">Programme List</div>
+            </a>
+        </div>
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/department-list" class="sas-link-card">
+                <div class="sas-link-card-title">Department List</div>
+            </a>
+        </div>
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/subject-list" class="sas-link-card">
+                <div class="sas-link-card-title">Subject List</div>
+            </a>
+        </div>
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/teaches-list" class="sas-link-card">
+                <div class="sas-link-card-title">Teaches List</div>
+            </a>
+        </div>
+    </div>
+
+    <br>
+
+    <h4>Lists to view only</h4>
+    <div class="row">
+        <div class="col col-lg-3">
+            <a href="{{dir.parent}}/attendance-list" class="sas-link-card">
+                <div class="sas-link-card-title">Attendance List</div>
+            </a>
+        </div>
+    </div>
+
+</div>
