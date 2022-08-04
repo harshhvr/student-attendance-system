@@ -1,0 +1,96 @@
+{{!-- add-teaches-form.hbs --}}
+
+{{!-- Add Teaches Form --}}
+<div class="row g-3">
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="tid" class="form-select" name="tid" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                {{#each formInput.teacher}}
+                <option value="{{this.Tid}}">{{this.Tid}} - {{this.Fname}} {{this.Lname}}</option>
+                {{/each}}
+            </select>
+            <label for="tid">Tid</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="subjectCode" class="form-select" name="subject_code" aria-label="Default select example"
+                required>
+                <option value="" selected>Select</option>
+                {{#each formInput.subject}}
+                <option value="{{this.Subject_code}}">{{this.Subject_code}} - {{this.Subject_name}}</option>
+                {{/each}}
+            </select>
+            <label for="subjectCode">Subject Code</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="programme" class="form-select" name="programme" onchange="getClassesOfProgramme(this,'Year')"
+                aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                {{#each formInput.programme}}
+                <option value="{{this.Prog_abbr}}">{{this.Prog_abbr}} - {{this.Prog_name}}</option>
+                {{/each}}
+            </select>
+            <label for="programme">Programme</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="class" class="form-select" name="class" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                <option value="1" class="ordinal-number">1</option>
+                <option value="2" class="ordinal-number">2</option>
+                <option value="3" class="ordinal-number">3</option>
+                <option value="4" class="ordinal-number">4</option>
+            </select>
+            <label for="class">Class</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="department" class="form-select" name="department" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                {{#each formInput.department}}
+                <option value="{{this.Dept_abbr}}">{{this.Dept_abbr}} - {{this.Dept_name}}</option>
+                {{/each}}
+            </select>
+            <label for="department">Department</label>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-floating mb-3">
+            <select id="section" class="form-select" name="section" aria-label="Default select example" required>
+                <option value="" selected>Select</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+            <label for="section">Section</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>
+
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+
+    switchInputsById(
+        { src: "tid", dest: "subjectCode" },
+        { src: "subjectCode", dest: "programme" },
+        { src: "programme", dest: "class" },
+        { src: "class", dest: "department" },
+        { src: "department", dest: "section" }
+    );
+</script>

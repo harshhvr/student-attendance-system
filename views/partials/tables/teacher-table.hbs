@@ -1,0 +1,52 @@
+{{!-- teacher-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                <th scope="col">Tid</th>
+                <th scope="col">Fname</th>
+                <th scope="col">Lname</th>
+                <th scope="col">Email</th>
+                {{!-- <th scope="col">Password</th> --}}
+                <th scope="col">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.teacher}}
+            <tr class="{{#ifEquals this.Status 'active'}}table-default{{else}}table-secondary{{/ifEquals}}">
+                <th scope="row">{{this.Tid}}</th>
+                <td>{{this.Fname}}</td>
+                <td>{{this.Lname}}</td>
+                <td>{{this.Email}}</td>
+                {{!-- <td>{{this.Password}}</td> --}}
+                <td>{{this.Status}}</td>
+                <td class="text-end">
+                    <a href="{{../dir.parent}}/teacher-list/view-teacher/{{this.Tid}}" type="button"
+                        class="btn btn-dark btn-small" title="View"><i class="bi bi-eye"></i></a>
+                    <a href="{{../dir.parent}}/teacher-list/edit-teacher/{{this.Tid}}" type="button"
+                        class="btn btn-dark btn-small" title="Edit"
+                        onclick="return confirm('Are you sure, you want to edit \'{{this.Tid}}\'?')"><i
+                            class="bi bi-pencil"></i></a>
+                    {{#ifEquals this.Status "active"}}
+                    <a href="#{{this.Tid}}--{{this.Status}}" type="button" class="btn btn-warning btn-small"
+                        data-href="{{../dir.parent}}/teacher-list/changeStatus/{{this.Tid}}/{{this.Status}}"
+                        data-message="Are you sure, you want to block '{{this.Tid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Block"><i class="bi bi-slash-circle"></i></a>
+                    {{else}}
+                    <a href="#{{this.Tid}}--{{this.Status}}" type="button" class="btn btn-success btn-small"
+                        data-href="{{../dir.parent}}/teacher-list/changeStatus/{{this.Tid}}/{{this.Status}}"
+                        data-message="Are you sure, you want to unblock '{{this.Tid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-check-circle"></i></a>
+                    {{/ifEquals}}
+                    <a href="#{{this.Tid}}--{{this.Status}}" type="button" class="btn btn-danger btn-small"
+                        data-href="{{../dir.parent}}/teacher-list/delete/{{this.Tid}}"
+                        data-message="Are you sure, you want to delete '{{this.Tid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-person-x"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

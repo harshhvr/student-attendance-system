@@ -1,0 +1,36 @@
+{{!-- add-student.hbs --}}
+
+<div class="container-fluid">
+
+    <nav class="fw-semibold" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Add Student</li>
+        </ol>
+    </nav>
+
+    <br>
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/basic-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid overflow-auto">
+
+    {{!-- Add Student Form --}}
+    <form action="{{dir.parent}}/student-list/add-student" class="row g-3 needs-validation" method="POST" novalidate>
+        {{>forms/add-student-form}}
+    </form>
+
+</div>

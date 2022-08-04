@@ -1,0 +1,40 @@
+{{!-- view-class-students-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            {{#each schema.reqParams}}
+            <tr class="bg-light text-dark fs-5">
+                <th scope="col" colspan="3" class="text-center">
+                    <span>{{this.prog}} - </span>
+                    <span class="ordinal-number">{{this.class}}</span>
+                    <span> - {{this.dept}} - {{this.section}}</span>
+                </th>
+            </tr>
+            {{/each}}
+            <tr>
+                <th scope="col">Sid</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.student}}
+            <tr class="{{#ifEquals this.Status 'active'}}table-default{{else}}table-secondary{{/ifEquals}}">
+                <th scope="row">{{this.Sid}}</th>
+                <td>{{this.Fname}} {{this.Lname}}</td>
+                <td>{{this.Email}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+</script>

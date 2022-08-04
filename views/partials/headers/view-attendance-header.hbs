@@ -1,0 +1,48 @@
+{{!-- view-attendance-header.hbs --}}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h3>{{title}}</h3>
+    </div>
+
+    {{#each schema}}
+    {{#if this.reqData}}
+    <div class="col-sm-auto">
+        {{#each this.reqData}}
+        <div class="font-monospace">
+            <span>{{this.programme}} </span>
+            <span class="ordinal-number">{{this.class}} </span>
+            <span>{{this.department}} </span>
+            <span>{{this.section}} </span>
+            <i class="bi bi-dot"></i>
+            <span class="text-500"> {{this.date}}</span>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    {{#if this.attendance}}
+    <div class="col-sm-auto">
+        <div class="font-monospace">
+            <span>Items: </span>
+            {{#if this.attendanceFunctions}}
+            <span>{{this.attendanceFunctions.length}}</span>
+            {{else}}
+            <span>0</span>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+    {{/each}}
+</div>
+
+<hr>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+</script>

@@ -1,0 +1,69 @@
+{{!-- student-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                <th scope="col">Sid</th>
+                <th scope="col">Fname</th>
+                <th scope="col">Lname</th>
+                <th scope="col">Programme</th>
+                <th scope="col">Class</th>
+                <th scope="col">Department</th>
+                <th scope="col">Section</th>
+                <th scope="col">Email</th>
+                {{!-- <th scope="col">Password</th> --}}
+                <th scope="col">Status</th>
+                <th scope="col" class="text-end">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema.student}}
+            <tr class="{{#ifEquals this.Status 'active'}}table-default{{else}}table-secondary{{/ifEquals}}">
+                <th scope="row">{{this.Sid}}</th>
+                <td>{{this.Fname}}</td>
+                <td>{{this.Lname}}</td>
+                <td>{{this.Programme}}</td>
+                <td class="ordinal-number">{{this.Class}}</td>
+                <td>{{this.Department}}</td>
+                <td>{{this.Section}}</td>
+                <td>{{this.Email}}</td>
+                {{!-- <td>{{this.Password}}</td> --}}
+                <td>{{this.Status}}</td>
+                <td class="text-end">
+                    <a href="{{../dir.parent}}/student-list/view-student/{{this.Sid}}" type="button"
+                        class="btn btn-dark btn-small" title="View"><i class="bi bi-eye"></i></a>
+                    <a href="{{../dir.parent}}/student-list/edit-student/{{this.Sid}}" type="button"
+                        class="btn btn-dark btn-small" title="Edit"
+                        onclick="return confirm('Are you sure, you want to edit \'{{this.Sid}}\'?')"><i
+                            class="bi bi-pencil"></i></a>
+                    {{#ifEquals this.Status "active"}}
+                    <a href="#{{this.Sid}}--{{this.Status}}" type="button" class="btn btn-warning btn-small"
+                        data-href="{{../dir.parent}}/student-list/changeStatus/{{this.Sid}}/{{this.Status}}"
+                        data-message="Are you sure, you want to block '{{this.Sid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Block"><i class="bi bi-slash-circle"></i></a>
+                    {{else}}
+                    <a href="#{{this.Sid}}--{{this.Status}}" type="button" class="btn btn-success btn-small"
+                        data-href="{{../dir.parent}}/student-list/changeStatus/{{this.Sid}}/{{this.Status}}"
+                        data-message="Are you sure, you want to unblock '{{this.Sid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-check-circle"></i></a>
+                    {{/ifEquals}}
+                    <a href="#{{this.Sid}}--{{this.Status}}" type="button" class="btn btn-danger btn-small"
+                        data-href="{{../dir.parent}}/student-list/delete/{{this.Sid}}"
+                        data-message="Are you sure, you want to delete '{{this.Sid}}'"
+                        onclick="fancyAlert({confirm:this})" title="Active"><i class="bi bi-person-x"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+</script>

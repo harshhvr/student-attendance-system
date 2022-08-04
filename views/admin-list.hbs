@@ -1,0 +1,33 @@
+{{!-- admin-list.hbs --}}
+
+<div class="container-fluid">
+
+    <nav class="fw-semibold" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{#each breadcrumbItems}}
+            <li class="breadcrumb-item"><a href="{{this.link}}">{{this.name}}</a></li>
+            {{/each}}
+            <li class="breadcrumb-item active" aria-current="page">Admin List</li>
+        </ol>
+    </nav>
+
+    <br>
+
+    <div class="position-relative">
+        <div class="position-relative">
+            <div class="position-absolute top-0 start-50 translate-middle">
+                {{!-- Dismissing Alert --}}
+                {{>alerts/dismissing-alerts}}
+            </div>
+        </div>
+
+        {{>headers/admin-header}}
+    </div>
+
+</div>
+
+<div class="container-fluid grid-container">
+
+    {{>tables/admin-table}}
+
+</div>

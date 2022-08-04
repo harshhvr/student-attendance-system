@@ -1,0 +1,415 @@
+// admin router
+
+const express = require("express");
+const router = express.Router();
+const adminController = require("../src/controllers/adminController");
+
+//
+// GET Requests
+
+router.get("/", (req, res, next) => {
+  res.redirect("/admin/dashboard");
+});
+router.get(
+  "/dashboard",
+  adminController.checkSignIn,
+  adminController.viewAdminDashboard
+);
+
+router.get(
+  "/profile",
+  adminController.checkSignIn,
+  adminController.viewAdminProfile
+);
+
+router.get(
+  "/admin-list",
+  adminController.checkSignIn,
+  adminController.viewAdminList
+);
+router.get(
+  "/teacher-list",
+  adminController.checkSignIn,
+  adminController.viewTeacherList
+);
+router.get(
+  "/student-list",
+  adminController.checkSignIn,
+  adminController.viewStudentList
+);
+router.get(
+  "/programme-list",
+  adminController.checkSignIn,
+  adminController.viewProgrammeList
+);
+router.get(
+  "/department-list",
+  adminController.checkSignIn,
+  adminController.viewDepartmentList
+);
+router.get(
+  "/subject-list",
+  adminController.checkSignIn,
+  adminController.viewSubjectList
+);
+router.get(
+  "/teaches-list",
+  adminController.checkSignIn,
+  adminController.viewTeachesList
+);
+router.get(
+  "/attendance-list",
+  adminController.checkSignIn,
+  adminController.viewAttendanceList
+);
+
+router.get(
+  "/admin-list/view-admin/:id",
+  adminController.checkSignIn,
+  adminController.viewAdmin
+);
+router.get(
+  "/teacher-list/view-teacher/:id",
+  adminController.checkSignIn,
+  adminController.viewTeacher
+);
+router.get(
+  "/student-list/view-student/:id",
+  adminController.checkSignIn,
+  adminController.viewStudent
+);
+router.get(
+  "/programme-list/view-programme/:id",
+  adminController.checkSignIn,
+  adminController.viewProgramme
+);
+router.get(
+  "/department-list/view-department/:id",
+  adminController.checkSignIn,
+  adminController.viewDepartment
+);
+router.get(
+  "/subject-list/view-subject/:id",
+  adminController.checkSignIn,
+  adminController.viewSubject
+);
+router.get(
+  "/teaches-list/view-teaches/:id",
+  adminController.checkSignIn,
+  adminController.viewTeaches
+);
+
+router.get(
+  "/admin-list/add-admin",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addAdminForm
+);
+router.get(
+  "/teacher-list/add-teacher",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addTeacherForm
+);
+router.get(
+  "/student-list/add-student",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addStudentForm
+);
+router.get(
+  "/programme-list/add-programme",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addProgrammeForm
+);
+router.get(
+  "/department-list/add-department",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addDepartmentForm
+);
+router.get(
+  "/subject-list/add-subject",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addSubjectForm
+);
+router.get(
+  "/teaches-list/add-teaches",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addTeachesForm
+);
+
+router.get(
+  "/admin-list/edit-admin/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editAdminForm
+);
+router.get(
+  "/teacher-list/edit-teacher/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editTeacherForm
+);
+router.get(
+  "/student-list/edit-student/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editStudentForm
+);
+router.get(
+  "/programme-list/edit-programme/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editProgrammeForm
+);
+router.get(
+  "/department-list/edit-department/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editDepartmentForm
+);
+router.get(
+  "/subject-list/edit-subject/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editSubjectForm
+);
+router.get(
+  "/teaches-list/edit-teaches/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.editTeachesForm
+);
+
+router.get(
+  "/admin-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkForFulAccess,
+  adminController.restrictActionsForOwn,
+  adminController.checkStatus,
+  adminController.changeAdminStatus
+);
+router.get(
+  "/teacher-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeTeacherStatus
+);
+router.get(
+  "/student-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeStudentStatus
+);
+router.get(
+  "/programme-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeProgrammeStatus
+);
+router.get(
+  "/department-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeDepartmentStatus
+);
+router.get(
+  "/subject-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeSubjectStatus
+);
+router.get(
+  "/teaches-list/changeStatus/:id/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeTeachesStatus
+);
+router.get(
+  "/attendance-list/changeStatus/:date/:sid/:tid/:subject_code/:status",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.changeAttendanceStatus
+);
+
+router.get(
+  "/admin-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkForFulAccess,
+  adminController.restrictActionsForOwn,
+  adminController.checkStatus,
+  adminController.deleteAdmin
+);
+router.get(
+  "/teacher-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteTeacher
+);
+router.get(
+  "/student-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteStudent
+);
+router.get(
+  "/programme-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteProgramme
+);
+router.get(
+  "/department-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteDepartment
+);
+router.get(
+  "/subject-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteSubject
+);
+router.get(
+  "/teaches-list/delete/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.deleteTeaches
+);
+
+//
+// POST Requests
+
+router.post(
+  "/admin-list",
+  adminController.checkSignIn,
+  adminController.findAdmin
+);
+router.post(
+  "/teacher-list",
+  adminController.checkSignIn,
+  adminController.findTeacher
+);
+router.post(
+  "/student-list",
+  adminController.checkSignIn,
+  adminController.findStudent
+);
+router.post(
+  "/programme-list",
+  adminController.checkSignIn,
+  adminController.findProgramme
+);
+router.post(
+  "/department-list",
+  adminController.checkSignIn,
+  adminController.findDepartment
+);
+router.post(
+  "/subject-list",
+  adminController.checkSignIn,
+  adminController.findSubject
+);
+router.post(
+  "/teaches-list",
+  adminController.checkSignIn,
+  adminController.findTeaches
+);
+router.post(
+  "/attendance-list",
+  adminController.checkSignIn,
+  adminController.findAttendance
+);
+
+router.post(
+  "/admin-list/add-admin",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addAdmin
+);
+router.post(
+  "/teacher-list/add-teacher",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addTeacher
+);
+router.post(
+  "/student-list/add-student",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addStudent
+);
+router.post(
+  "/programme-list/add-programme",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addProgramme
+);
+router.post(
+  "/department-list/add-department",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addDepartment
+);
+router.post(
+  "/subject-list/add-subject",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addSubject
+);
+router.post(
+  "/teaches-list/add-teaches",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.addTeaches
+);
+
+router.post(
+  "/admin-list/edit-admin/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateAdmin
+);
+router.post(
+  "/teacher-list/edit-teacher/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateTeacher
+);
+router.post(
+  "/student-list/edit-student/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateStudent
+);
+router.post(
+  "/programme-list/edit-programme/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateProgramme
+);
+router.post(
+  "/department-list/edit-department/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateDepartment
+);
+router.post(
+  "/subject-list/edit-subject/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateSubject
+);
+router.post(
+  "/teaches-list/edit-teaches/:id",
+  adminController.checkSignIn,
+  adminController.checkStatus,
+  adminController.updateTeaches
+);
+
+// Export routers
+module.exports = router;

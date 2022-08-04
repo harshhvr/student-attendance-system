@@ -1,0 +1,349 @@
+{{!-- view-attendance-by-student-table.hbs --}}
+
+<div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        {{!-- Charts --}}
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <div>
+                    <canvas id="myChart1"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        {{!-- Charts --}}
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <div>
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        {{!-- Charts --}}
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <div>
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body overflow-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" rowspan="2">Subject Code</th>
+                            <th scope="col" colspan="4">Per Subject</th>
+                            <th scope="col" rowspan="2">Attendance Percent</th>
+                        </tr>
+                        <tr class="attendance-header">
+                            <th scope="col">Total Lectures</th>
+                            <th scope="col">Present</th>
+                            <th scope="col">Absent</th>
+                            <th scope="col">Attendance Percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each schema.attendance}}
+                        <tr class="attendance">
+                            <th scope="row">{{this.Subject_code}}</th>
+                            <td>{{this.Total_lectures_in_subject}}</td>
+                            <td>{{this.Total_present}}</td>
+                            <td>{{this.Total_absent}}</td>
+                            <td><progress value="{{this.Attendance_percent_in_subject}}"
+                                    max="100">{{this.Attendance_percent_in_subject}}</progress>
+                                {{this.Attendance_percent_in_subject}}%</td>
+                            <td><progress value="{{this.Attendance_percent}}"
+                                    max="100">{{this.Attendance_percent}}</progress>
+                                {{this.Attendance_percent}}%</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    const target = ['.attendance'];
+    const elements = document.querySelectorAll(target[0]);
+    const myData = {
+        subject_code: [],
+        per_subject: {
+            lectures: [],
+            present: [],
+            absent: [],
+            percent: [],
+        },
+        percent: [],
+    };
+    elements.forEach((element) => {
+        myData.subject_code.push(element.children[0].innerText);
+        myData.per_subject.lectures.push(parseInt(element.children[1].innerText));
+        myData.per_subject.present.push(parseInt(element.children[2].innerText));
+        myData.per_subject.absent.push(parseInt(element.children[3].innerText));
+        myData.per_subject.percent.push(parseFloat(element.children[4].innerText.replace('%', '')));
+        myData.percent.push(parseFloat(element.children[5].innerText.replace('%', '')));
+    });
+    console.log(myData);
+
+    // By Chart.js
+    const plugin = {
+        id: 'emptyDoughnut',
+        afterDraw(chart, args, options) {
+            const { datasets } = chart.data;
+            const { color, width, radiusDecrease } = options;
+            let hasData = false;
+
+            for (let i = 0; i < datasets.length; i += 1) {
+                const dataset = datasets[i];
+                hasData |= dataset.data.length > 0;
+            }
+
+            if (!hasData) {
+                const { chartArea: { left, top, right, bottom }, ctx } = chart;
+                const centerX = (left + right) / 2;
+                const centerY = (top + bottom) / 2;
+                const r = Math.min(right - left, bottom - top) / 2;
+
+                ctx.beginPath();
+                ctx.lineWidth = width || 2;
+                ctx.strokeStyle = color || 'rgba(173, 181, 189, 0.5)';
+                ctx.arc(centerX, centerY, (r - radiusDecrease || 0), 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        }
+    };
+
+    // Chart 1
+    const datasets1 = [];
+    elements.forEach((element) => {
+        console.log(element);
+        datasets1.push({
+            label: 'element.children[0].innerText',
+            data: [
+                parseInt(element.children[2].innerText),
+                parseInt(element.children[3].innerText),
+                parseInt(element.children[1].innerText),
+            ],
+            backgroundColor: [
+                '#36a2eb', // By Chart.js Colors
+                '#ff6384', // By Chart.js Colors
+                '#ffcd56', // By Chart.js Colors
+            ],
+            hoverOffset: 4,
+        });
+    });
+    const data1 = {
+        labels: ['Present', 'Absent', 'Total'],
+        datasets: datasets1
+    };
+    const config1 = {
+        type: 'doughnut',
+        data: data1,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Attendance record of each Subject'
+                },
+                emptyDoughnut: {
+                    color: 'rgba(173, 181, 189, 0.5)',
+                    width: 2,
+                    radiusDecrease: 20
+                }
+            },
+            animations: {
+                radius: {
+                    duration: 400,
+                    easing: 'linear',
+                    loop: (context) => context.active
+                }
+            },
+        },
+        plugins: [plugin]
+    };
+    const myChart1 = new Chart(
+        document.getElementById('myChart1'),
+        config1
+    );
+
+    // Chart 2
+    const data2 = {
+        labels: myData.subject_code,
+        datasets: [{
+            label: 'My First Dataset',
+            data: myData.percent,
+            backgroundColor: [
+                '#6610f2', // By Bootstrap Colors
+                '#6f42c1', // By Bootstrap Colors
+                '#d63384', // By Bootstrap Colors
+                '#dc3545', // By Bootstrap Colors
+                '#fd7e14', // By Bootstrap Colors
+                '#ffc107', // By Bootstrap Colors
+                '#198754', // By Bootstrap Colors
+                '#20c997', // By Bootstrap Colors
+                '#0dcaf0', // By Bootstrap Colors
+                '#adb5bd', // By Bootstrap Colors
+            ],
+            hoverOffset: 4,
+        }],
+    };
+    const config2 = {
+        type: 'doughnut',
+        data: data2,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Total Lectures by Subject (in %)'
+                },
+                emptyDoughnut: {
+                    color: 'rgba(173, 181, 189, 0.5)',
+                    width: 2,
+                    radiusDecrease: 20
+                }
+            },
+            animations: {
+                radius: {
+                    duration: 400,
+                    easing: 'linear',
+                    loop: (context) => context.active
+                }
+            },
+        },
+        plugins: [plugin]
+    };
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    // Chart 3
+    const overall_attendance_data = [
+        (((sum(myData.per_subject.present) * 100) / sum(myData.per_subject.lectures)).toFixed(2)),
+        (((sum(myData.per_subject.absent) * 100) / sum(myData.per_subject.lectures)).toFixed(2)),
+    ];
+    const data3 = {
+        labels: checkArrayForNaN(overall_attendance_data) === true ? [] : ['Present', 'Absent'],
+        datasets: [{
+            label: 'My First Dataset',
+            data: checkArrayForNaNAndReturnArray(overall_attendance_data),
+            backgroundColor: [
+                '#20c997', // By Bootstrap Colors
+                '#adb5bd', // By Bootstrap Colors
+            ],
+            hoverOffset: 4,
+        }],
+    };
+    console.log(data3);
+    const config3 = {
+        type: 'doughnut',
+        data: data3,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Overall Attendance (in %)'
+                },
+                emptyDoughnut: {
+                    color: 'rgba(173, 181, 189, 0.5)',
+                    width: 2,
+                    radiusDecrease: 20
+                }
+            },
+            animations: {
+                radius: {
+                    duration: 400,
+                    easing: 'linear',
+                    loop: (context) => context.active
+                }
+            },
+        },
+        plugins: [plugin]
+    };
+    const myChart3 = new Chart(
+        document.getElementById('myChart3'),
+        config3
+    );
+
+    // My Functions
+    function checkArrayForNaNAndReturnArray(array) {
+        if (checkArrayForNaN(array)) {
+            return [];
+        } else {
+            return array;
+        }
+    }
+    function checkArrayForNaN(array) {
+        _count = 0;
+        array.forEach((e) => {
+            if (isNaN(e)) {
+                _count++;
+            }
+        });
+        console.log(_count);
+        if (_count === array.length) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function convertIntoPercentage(array) {
+        _sum = sum(array);
+        _percent = [];
+        array.forEach((e) => {
+            _percent.push(((e / _sum) * 100).toFixed(2));
+        });
+        return _percent;
+    }
+    function sum(array) {
+        _sum = 0;
+        array.forEach((e) => {
+            _sum += e;
+        });
+        return _sum;
+    }
+</script>
+<script>
+
+    /*
+    const backgroundColor = [
+        '#36a2eb', // By Chart.js Colors
+        '#ff6384', // By Chart.js Colors
+        '#ffcd56', // By Chart.js Colors
+        '#0d6efd', // By Bootstrap Colors
+        '#6610f2', // By Bootstrap Colors
+        '#6f42c1', // By Bootstrap Colors
+        '#d63384', // By Bootstrap Colors
+        '#dc3545', // By Bootstrap Colors
+        '#fd7e14', // By Bootstrap Colors
+        '#ffc107', // By Bootstrap Colors
+        '#198754', // By Bootstrap Colors
+        '#20c997', // By Bootstrap Colors
+        '#0dcaf0', // By Bootstrap Colors
+        '#adb5bd', // By Bootstrap Colors
+    ],
+    * /
+</script>

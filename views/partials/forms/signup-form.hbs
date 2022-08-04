@@ -1,0 +1,49 @@
+{{!-- signup-form.hbs --}}
+
+{{!-- Signup Form --}}
+<div class="row g-3">
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <select id="userType" class="form-select" name="user_type" aria-label="Default select example" required>
+                <option selected>Select</option>
+                <option value="admin">Admin</option>
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select>
+            <label for="userType">User Type</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="userId" placeholder="User ID" name="user_id" required>
+            <label for="userId">User ID</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="fname" placeholder="First Name" name="fname" required>
+            <label for="fname">First Name</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="lname" placeholder="Last Name" name="lname" required>
+            <label for="lname">Last Name</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+            <label for="email">Email address</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+            <label for="password">Password</label>
+        </div>
+    </div>
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>

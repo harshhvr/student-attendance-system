@@ -1,0 +1,119 @@
+{{!-- manage-attendance-table.hbs --}}
+
+<div class="row g-2">
+    {{#each schema.classes}}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+        <form action="{{../dir.parent}}/manage-attendance/view-attendance" class="h-100 needs-validation" method="POST"
+            novalidate>
+            <div class="card h-100 border-dark">
+                <div class="card-header border-dark fw-bold user-select-none">#{{counter @index}}</div>
+                {{!-- <div class="card-body">
+                    <div class="card-title">
+                        {{this.Subject_code}} - {{this.Subject_name}} |
+                        {{this.Programme}} | <span class="ordinal-number">{{this.Class}}</span>
+                        |
+                        {{this.Department}} | {{this.Section}}
+                    </div>
+                </div> --}}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">Subject Code</div>
+                        <div class="col-sm-6 text-muted">{{this.Subject_code}}</div>
+                        <div class="col-sm-6">Subject Name</div>
+                        <div class="col-sm-6 text-muted">{{this.Subject_name}}</div>
+                        <div class="col-sm-6">Programme</div>
+                        <div class="col-sm-6 text-muted">{{this.Programme}}</div>
+                        <div class="col-sm-6">Class</div>
+                        <div class="col-sm-6 text-muted"><span class="ordinal-number">{{this.Class}}</span></div>
+                        <div class="col-sm-6">Department</div>
+                        <div class="col-sm-6 text-muted">{{this.Department}}</div>
+                        <div class="col-sm-6">Section</div>
+                        <div class="col-sm-6 text-muted">{{this.Section}}</div>
+                    </div>
+                </div>
+                <div class="card-body position-absolute opacity-0" style="z-index: -1;">
+                    <div class="col-sm-auto">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="programme" placeholder="Programme"
+                                name="programme" value="{{this.Programme}}" readonly required>
+                            <label for="programme">Programme</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="class" placeholder="Class" name="class"
+                                value="{{this.Class}}" readonly required>
+                            <label for="class">Class</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="department" placeholder="Department"
+                                name="department" value="{{this.Department}}" readonly required>
+                            <label for="department">Department</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="section" placeholder="Section" name="section"
+                                value="{{this.Section}}" readonly required>
+                            <label for="section">Section</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-auto">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="subjectCode" placeholder="Subject Code"
+                                name="subject_code" value="{{this.Subject_code}}" readonly required>
+                            <label for="subjectCode">Subject Code</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer border-dark user-select-none">
+                    <div class="row g-3">
+                        <div class="col-sm">
+                            <div class="form-floating mb-3">
+                                <input type="date" class="form-control form-control-sm date" id="date"
+                                    placeholder="Date" name="date" value="{{this.Date}}" data-value="currentDate"
+                                    required>
+                                <label for="date">Attendance Date</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-auto">
+                            <button class="btn btn-dark" type="submit">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    {{/each}}
+</div>
+
+
+<script>
+    // Add class 'ordinal-number'
+    convertIntoOrdinalNumberByQuerySelector({
+        target: ".ordinal-number",
+        text: "Year",
+    });
+
+    const elements = document.querySelectorAll(".date[data-value=currentDate]");
+    elements.forEach((element, elementIndex) => {
+        const d = new Date();
+
+        let yyyy = d.getFullYear();
+        let mm = d.getMonth();
+        let dd = d.getDate();
+
+        mm = mm + 1;
+
+        yyyy = yyyy < 10 ? "0" + yyyy : yyyy;
+        mm = mm < 10 ? "0" + mm : mm;
+        dd = dd < 10 ? "0" + dd : dd;
+
+        const currentDate = `${yyyy}-${mm}-${dd}`;
+
+        element.setAttribute("value", currentDate);
+        // console.log(element);
+    });
+</script>

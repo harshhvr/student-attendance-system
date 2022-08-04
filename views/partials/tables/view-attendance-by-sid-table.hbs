@@ -1,0 +1,20 @@
+{{!-- view-attendance-by-sid-table.hbs --}}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Present</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each rows2}}
+        <tr>
+            <th scope="row">{{dateFormat this.Date "YYYY-MM-DD"}}</th>
+            <td>{{this.Course_code}}</td>
+            <td>{{this.Present}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

@@ -1,0 +1,101 @@
+{{!-- add-attendance-by-teacher-form.hbs --}}
+
+{{!-- Add Attendance by Teacher - Form --}}
+{{#each this.reqData}}
+<div class="row g-3 position-absolute opacity-0" style="z-index: -1;">
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="date" class="form-control" id="date" placeholder="Date" name="date" value="{{this.date}}"
+                readonly required>
+            <label for="date">Attendance Date</label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="subjectCode" placeholder="Subject Code" name="subject_code"
+                value="{{this.subject_code}}" readonly required>
+            <label for="subjectCode">Subject Code</label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="programme" placeholder="Programme" name="programme"
+                value="{{this.programme}}" readonly required>
+            <label for="programme">Programme</label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="class" placeholder="Class" name="class" value="{{this.class}}"
+                readonly required>
+            <label for="class">Class</label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="department" placeholder="Department" name="department"
+                value="{{this.department}}" readonly required>
+            <label for="department">Department</label>
+        </div>
+    </div>
+    <div class="col-lg-2 col-sm-4">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="section" placeholder="Section" name="section"
+                value="{{this.section}}" readonly required>
+            <label for="section">Section</label>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+<div class="row g-3">
+
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sid</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each this.student}}
+                        <tr>
+                            <th scope="row">{{this.Sid}}</th>
+                            <td>{{this.Fname}} {{this.Lname}}</td>
+                            <td>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="student_id" name="student_id"
+                                        value="{{this.Sid}}" {{#ifEquals this.Status 'present' }}checked{{/ifEquals}}>
+                                    <label for="student_id"></label>
+                                </div>
+                            </td>
+                            {{!-- <td>
+                                <button class="btn btn-dark" type="submit">Done</button>
+                            </td> --}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 d-grid">
+        <button class="btn btn-dark" type="submit">Submit</button>
+    </div>
+</div>
+
+
+{{!--
+<script src="/javascripts/disable-inputs.js"></script>
+<script>
+    disableInput(['[name="date"]', '[name="class"]', '[name="section"]', '[name="subject_code"]']);
+</script> --}}

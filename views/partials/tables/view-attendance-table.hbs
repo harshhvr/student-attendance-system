@@ -1,0 +1,24 @@
+{{!-- view-attendance-table.hbs --}}
+
+<div class="shadow overflow-auto">
+    <table class="table min-w-1280px max-w-1280px">
+        <thead class="sticky-top bg-dark text-light">
+            <tr>
+                <th scope="col">Sid</th>
+                <th scope="col">Name</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each schema}}
+            {{#each this.attendance}}
+            <tr>
+                <td>{{this.Sid}}</td>
+                <td>{{this.Fname}} {{this.Lname}}</td>
+                <td>{{this.Status}}</td>
+            </tr>
+            {{/each}}
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,40 @@
+{{!-- big-banner.hbs --}}
+
+<div class="big-banner banner-effect-1">
+    <div></div>
+    <div>
+        {{!-- <h1 class="text-white fw-bold p-3 rounded bg-black bg-opacity-50">Student Attendance System</h1> --}}
+        <div class="text-white p-3 rounded-top bg-dark">
+            <h1 class="shadow-lg">Student Attendance System</h1>
+        </div>
+    </div>
+    {{!-- <div>
+        <h4 class="cb-text-home">Welcome to home!</h4>
+    </div> --}}
+    <div class="flip-clock">
+        <div class="clock" style="margin:2em;"></div>
+
+        <script type="text/javascript">
+            /*
+            var clock;
+
+            $(document).ready(function() {
+                clock = $('.clock').FlipClock({
+                    clockFace: 'TwentyFourHourClock'
+                });
+            });
+            */
+            const el = document.querySelector('.clock');
+
+            const clock = new FlipClock(el, new Date, {
+                face: 'TwelveHourClock'
+            });
+        </script>
+    </div>
+    <div></div>
+</div>
+
+
+<script>
+    charactersInBlocks({ target: '.cb-text-home', style: { margin: '1px', padding: '1em', minWidth: "2.5em", borderRadius: '0.2rem', bgcolor: '#00000050', color: '#fff', fontFamily: '\'Ubuntu Mono\', monospace' } });
+</script>

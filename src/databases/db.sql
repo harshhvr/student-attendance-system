@@ -1,0 +1,165 @@
+-- create-db.sql
+
+-- Drop database if already exists
+DROP DATABASE IF EXISTS STUDENT_ATTENDANCE_SYSTEM;
+
+-- Creating STUDENT_ATTENDANCE_SYSTEM Schemas
+CREATE DATABASE STUDENT_ATTENDANCE_SYSTEM;
+
+USE STUDENT_ATTENDANCE_SYSTEM;
+
+-- Create ADMIN table
+DROP TABLE IF EXISTS ADMIN;
+CREATE TABLE ADMIN (
+    Aid VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Password VARCHAR(1000) NOT NULL,
+    Fname VARCHAR(255) NOT NULL,
+    Lname VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Admin PRIMARY KEY (Aid),
+    CONSTRAINT sk_Admin_Email UNIQUE (Email)
+);
+
+-- Create TEACHER table
+DROP TABLE IF EXISTS TEACHER;
+CREATE TABLE TEACHER (
+    Tid VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Password VARCHAR(1000) NOT NULL,
+    Fname VARCHAR(255) NOT NULL,
+    Lname VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Teacher PRIMARY KEY (Tid),
+    CONSTRAINT sk_Teacher_Email UNIQUE (Email)
+);
+
+-- Create PROGRAMME table
+DROP TABLE IF EXISTS PROGRAMME;
+CREATE TABLE PROGRAMME (
+    Prog_abbr VARCHAR(255) NOT NULL,
+    Prog_name VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Prog PRIMARY KEY (Prog_abbr)
+);
+
+-- Create DEPARTMENT table
+DROP TABLE IF EXISTS DEPARTMENT;
+CREATE TABLE DEPARTMENT (
+    -- Dept_code VARCHAR(255) NOT NULL,
+    Dept_abbr VARCHAR(255) NOT NULL,
+    Dept_name VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Dept PRIMARY KEY (Dept_abbr)
+);
+
+-- Create STUDENT table
+DROP TABLE IF EXISTS STUDENT;
+CREATE TABLE STUDENT (
+    Sid VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Password VARCHAR(1000) NOT NULL,
+    Fname VARCHAR(255) NOT NULL,
+    Lname VARCHAR(255) NOT NULL,
+    Programme VARCHAR(255) NOT NULL,
+    Department VARCHAR(255) NOT NULL,
+    Class VARCHAR(255) NOT NULL,
+    Section CHAR(1),
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Student PRIMARY KEY (Sid),
+    CONSTRAINT sk_Student_Email UNIQUE (Email),
+    CONSTRAINT fk_Student_Programme FOREIGN KEY (Programme) REFERENCES PROGRAMME(Prog_abbr) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Student_Department FOREIGN KEY (Department) REFERENCES DEPARTMENT(Dept_abbr) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Create SUBJECT table
+DROP TABLE IF EXISTS SUBJECT;
+CREATE TABLE SUBJECT (
+    Subject_code VARCHAR(255) NOT NULL,
+    Subject_name VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Subject PRIMARY KEY (Subject_code)
+);
+
+-- Create TEACHES table
+DROP TABLE IF EXISTS TEACHES;
+CREATE TABLE TEACHES (
+    Id INT NOT NULL AUTO_INCREMENT,
+    Tid VARCHAR(255) NOT NULL,
+    Subject_code VARCHAR(255) NOT NULL,
+    Programme VARCHAR(255) NOT NULL,
+    Department VARCHAR(255) NOT NULL,
+    Class VARCHAR(255) NOT NULL,
+    Section VARCHAR(255) NOT NULL,
+    Status VARCHAR(255) NOT NULL DEFAULT 'active',
+    CONSTRAINT pk_Teaches PRIMARY KEY (id),
+    CONSTRAINT fk_Teaches_Tid FOREIGN KEY (Tid) REFERENCES TEACHER(Tid) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Teaches_Subject_code FOREIGN KEY (Subject_code) REFERENCES SUBJECT(Subject_code) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Teaches_Programme FOREIGN KEY (Programme) REFERENCES PROGRAMME(Prog_abbr) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Teaches_Department FOREIGN KEY (Department) REFERENCES DEPARTMENT(Dept_abbr) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+-- Create ATTENDANCE table
+DROP TABLE IF EXISTS ATTENDANCE;
+CREATE TABLE ATTENDANCE (
+    Date DATE,
+    Sid VARCHAR(255) NOT NULL,
+    Tid VARCHAR(255) NOT NULL,
+    Subject_code VARCHAR(255) NOT NULL,
+    Status VARCHAR(120) NOT NULL,
+    CONSTRAINT pk_Attendance PRIMARY KEY (Date, Sid, Tid, Subject_code),
+    CONSTRAINT fk_Attendance_Sid FOREIGN KEY (Sid) REFERENCES STUDENT(Sid) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Attendance_Tid FOREIGN KEY (Tid) REFERENCES TEACHER(Tid) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_Attendance_Subject_code FOREIGN KEY (Subject_code) REFERENCES SUBJECT(Subject_code) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+
+
+-- Insert all the values
+
+
+-- User Tables
+
+-- Insert values into 'ADMIN' table
+
+-- Insert values into 'TEACHER' table
+
+-- Insert values into 'STUDENT' table
+
+
+-- Other Tables
+
+-- Insert values into 'PROGRAMME' table
+
+-- Insert values into 'DEPARTMENT' table
+
+-- Insert values into 'SUBJECT' table
+
+-- Insert values into 'TEACHES' table
+
+-- Insert values into 'ATTENDANCE' table
+
+
+
+-- Display the name of all the relations.
+SHOW TABLES;
+
+-- Display the description of all the relations.
+DESC ADMIN;
+DESC TEACHER;
+DESC STUDENT;
+DESC PROGRAMME;
+DESC DEPARTMENT;
+DESC SUBJECT;
+DESC TEACHES;
+DESC ATTENDANCE;
+
+-- Display the data of all the relations to validate.
+SELECT * FROM ADMIN;
+SELECT * FROM TEACHER;
+SELECT * FROM STUDENT;
+SELECT * FROM PROGRAMME;
+SELECT * FROM DEPARTMENT;
+SELECT * FROM SUBJECT;
+SELECT * FROM TEACHES;
+SELECT * FROM ATTENDANCE;
