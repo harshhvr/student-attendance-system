@@ -118,8 +118,6 @@ CREATE TABLE ATTENDANCE (
 -- Insert all the values
 
 
--- User Tables
-
 -- Insert values into 'ADMIN' table
 INSERT INTO ADMIN (Aid,Email,Password,Fname,Lname,Status) VALUES ('admin', 'admin@example.com', '$2a$10$93zqAoqqT2qb/zYwNZBC1Oofq.T0A4oZ3x/DpgWBWIrMPngGyq2hu', 'Admin', 'Admin', 'active');
 INSERT INTO ADMIN (Aid,Email,Password,Fname,Lname,Status) VALUES ('admin-m', 'johndoe@example.com', '$2a$10$93zqAoqqT2qb/zYwNZBC1Oofq.T0A4oZ3x/DpgWBWIrMPngGyq2hu', 'John', 'Doe', 'blocked');
@@ -134,6 +132,19 @@ INSERT INTO TEACHER (Tid,Email,Password,Fname,Lname) VALUES ('TEACHER005', 'teac
 INSERT INTO TEACHER (Tid,Email,Password,Fname,Lname) VALUES ('TEACHER006', 'teacher006@gmail.com', '$2a$10$xFkEcfTRKg6hQTLyZZWYMOklwiZKw8TsV2l6FEwlp8wyyeWlGrVPe', 'Er. Vikas', 'Vankhede');
 INSERT INTO TEACHER (Tid,Email,Password,Fname,Lname) VALUES ('TEACHER007', 'teacher008@gmail.com', '$2a$10$xFkEcfTRKg6hQTLyZZWYMOklwiZKw8TsV2l6FEwlp8wyyeWlGrVPe', 'Dr. Kamna', 'Lad');
 
+-- Insert values into 'PROGRAMME' table
+INSERT INTO PROGRAMME (Prog_abbr,Prog_name) VALUES ('BE', 'Bachelor of Engineering');
+INSERT INTO PROGRAMME (Prog_abbr,Prog_name) VALUES ('ME', 'Master of Engineering');
+
+-- Insert values into 'DEPARTMENT' table
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('CE', 'Computer Engineering');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('IT', 'Information Technology');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('E&I', 'Electronics & Instumentation Engineering');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('E&TC', 'Electronics & TeleCommunication Engineering');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Mech', 'Mechanical Engineering');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Civil', 'Civil Engineering');
+INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Applied', 'Applied Science');
+
 -- Insert values into 'STUDENT' table
 INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,Section) VALUES ('DE21642', '21bit081@ietdavv.edu.in', '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06', 'Aditi', 'Shukla', 'BE', 'IT', '2', 'A');
 INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,Section) VALUES ('DE21643', '21bit181@ietdavv.edu.in', '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06', 'Amit Kumar', 'Gontiya', 'BE', 'IT', '2', 'B');
@@ -147,22 +158,6 @@ INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,S
 INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,Section) VALUES ('DE21651', '21bit184@ietdavv.edu.in', '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06', 'Samiksha', 'Hanotiya', 'BE', 'IT', '2', 'B');
 INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,Section) VALUES ('DE21652', '21bit086@ietdavv.edu.in', '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06', 'Shlok', 'Jaiswal', 'BE', 'IT', '2', 'A');
 INSERT INTO STUDENT (Sid,Email,Password,Fname,Lname,Programme,Department,Class,Section) VALUES ('DE21653', '21bit185@ietdavv.edu.in', '$2a$10$TN9m/HcQJGAH0LDTQik8tepNgh.7hTG7gjSKxcEjY996nGp4AhL06', 'Tisha', 'Singh', 'BE', 'IT', '2', 'B');
-
-
--- Other Tables
-
--- Insert values into 'PROGRAMME' table
-INSERT INTO PROGRAMME (Prog_abbr,Prog_name) VALUES ('BE', 'Bachelor of Engineering');
-INSERT INTO PROGRAMME (Prog_abbr,Prog_name) VALUES ('ME', 'Master of Engineering');
-
--- Insert values into 'DEPARTMENT' table
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('CE', 'Computer Engineering');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('IT', 'Information Technology');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('E&I', 'Electronics & Instumentation Engineering');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('E&TC', 'Electronics & TeleCommunication Engineering');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Mech', 'Mechanical Engineering');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Civil', 'Civil Engineering');
-INSERT INTO DEPARTMENT (Dept_abbr,Dept_name) VALUES ('Applied', 'Applied Science');
 
 -- Insert values into 'SUBJECT' table
 INSERT INTO SUBJECT (Subject_code,Subject_name,Status) VALUES ('AIR4C1', 'Numerical & Optimization Techniques', 'active');

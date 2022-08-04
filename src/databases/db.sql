@@ -118,20 +118,15 @@ CREATE TABLE ATTENDANCE (
 -- Insert all the values
 
 
--- User Tables
-
 -- Insert values into 'ADMIN' table
 
 -- Insert values into 'TEACHER' table
 
--- Insert values into 'STUDENT' table
-
-
--- Other Tables
-
 -- Insert values into 'PROGRAMME' table
 
 -- Insert values into 'DEPARTMENT' table
+
+-- Insert values into 'STUDENT' table
 
 -- Insert values into 'SUBJECT' table
 
